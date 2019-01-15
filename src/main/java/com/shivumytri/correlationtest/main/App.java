@@ -22,15 +22,25 @@ import com.opencsv.CSVReader;
  */
 public class App {
 	public static void main(String[] args) {
+		
+		String fileName = "C:\\Users\\i329330\\Downloads\\Cor_ParkinsonDisease.csv"; // provide ur location of the file name;
 
-		List<Feature> lstOfCorlat = App.readDataLineByLine("C:\\Users\\i329330\\Downloads\\Cor_ParkinsonDisease.csv");
+		List<Feature> lstOfCorlat = App.readDataLineByLine(fileName);
 
 		System.out.println(lstOfCorlat.toString());
+
+		boolean isBinaryMethod = false; // true -- running in binary method mode false -- running in fibonnaci mode.
+
+		double NumberofFeatures = 500; // increase number of features when running in fiboncci mode. 
+		
+		double sqrtofNoFeatures = Math.sqrt(NumberofFeatures);
+		
+		System.out.println(sqrtofNoFeatures);
 
 		Comparator<Feature> comp = (feature1, feature2) -> feature1.getAverageValue() > feature2.getAverageValue() ? 1
 				: (feature1.getAverageValue() < feature2.getAverageValue() ? -1 : 0);
 
-		lstOfCorlat.sort(comp);  
+		lstOfCorlat.sort(comp);
 
 		System.out.println(lstOfCorlat.toString());
 
@@ -42,10 +52,13 @@ public class App {
 		int lastIndex = 0;
 		boolean ascending = true;
 
-		for (long i = 0; i < 10; i++) {
-			// int binaryResult = (int) Math.round(Math.pow(2, i));
-			int binaryResult = (int) fib(i);
-			// System.out.println(binaryResult);
+		for (long i = 0; i < sqrtofNoFeatures; i++) {
+			int binaryResult = 0;
+			if (isBinaryMethod) {
+				binaryResult = (int) Math.round(Math.pow(2, i));				
+			} else {
+				binaryResult = (int) fib(i);
+			}
 
 			if (ascending) {
 				for (int j = 0; j < bucketSize; j++) {
@@ -189,9 +202,16 @@ public class App {
 	}
 
 	static long fib(long n) {
-		if (n <= 1)
-			return n;
-		return fib(n - 1) + fib(n - 2);
+		
+		int a = 0, b = 1, c; 
+        if (n == 0) 
+            return a; 
+        for (int i = 2; i <= n; i++) { 
+            c = a + b; 
+            a = b; 
+            b = c; 
+        } 
+        return b; 
 	}
 
 }
