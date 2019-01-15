@@ -30,7 +30,7 @@ public class App {
 		Comparator<Feature> comp = (feature1, feature2) -> feature1.getAverageValue() > feature2.getAverageValue() ? 1
 				: (feature1.getAverageValue() < feature2.getAverageValue() ? -1 : 0);
 
-		lstOfCorlat.sort(comp);
+		lstOfCorlat.sort(comp); 
 
 		System.out.println(lstOfCorlat.toString());
 
