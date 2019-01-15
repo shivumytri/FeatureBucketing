@@ -31,9 +31,9 @@ public class App {
 
 		boolean isBinaryMethod = false; // true -- running in binary method mode false -- running in fibonnaci mode.
 
-		double NumberofFeatures = 500; // increase number of features when running in fiboncci mode. 
+		double numberofFeatures = 500; // increase number of features when running in fiboncci mode. 
 		
-		double sqrtofNoFeatures = Math.sqrt(NumberofFeatures);
+		double sqrtofNoFeatures = Math.sqrt(numberofFeatures);
 		
 		System.out.println(sqrtofNoFeatures);
 
