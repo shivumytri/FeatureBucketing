@@ -22,8 +22,9 @@ import com.opencsv.CSVReader;
  */
 public class App {
 	public static void main(String[] args) {
-		
-		String fileName = "C:\\Users\\i329330\\Downloads\\Cor_ParkinsonDisease.csv"; // provide ur location of the file name;
+
+		String fileName = "C:\\Users\\i329330\\Downloads\\Cor_ParkinsonDisease.csv"; // provide ur location of the file
+																						// name;
 
 		List<Feature> lstOfCorlat = App.readDataLineByLine(fileName);
 
@@ -31,10 +32,10 @@ public class App {
 
 		boolean isBinaryMethod = false; // true -- running in binary method mode false -- running in fibonnaci mode.
 
-		double numberofFeatures = 500; // increase number of features when running in fiboncci mode. 
-		
+		double numberofFeatures = 500; // increase number of features when running in fiboncci mode.
+
 		double sqrtofNoFeatures = Math.sqrt(numberofFeatures);
-		
+
 		System.out.println(sqrtofNoFeatures);
 
 		Comparator<Feature> comp = (feature1, feature2) -> feature1.getAverageValue() > feature2.getAverageValue() ? 1
@@ -55,7 +56,7 @@ public class App {
 		for (long i = 0; i < sqrtofNoFeatures; i++) {
 			int binaryResult = 0;
 			if (isBinaryMethod) {
-				binaryResult = (int) Math.round(Math.pow(2, i));				
+				binaryResult = (int) Math.round(Math.pow(2, i));
 			} else {
 				binaryResult = (int) fib(i);
 			}
@@ -127,8 +128,14 @@ public class App {
 		for (List<Map<Integer, List<Feature>>> temp : result2) {
 			System.out.println("======Bucket number=======" + j);
 			for (Entry<Integer, List<Feature>> curr : temp.get(0).entrySet()) {
-				System.out.println(curr.toString());
+				if (!curr.getValue().isEmpty()) {
+					for (Feature f1test : curr.getValue()) {
+						System.out.print(f1test.getFeatureName()+" ");
+					}
+				}
 			}
+			System.out.println();
+
 			j = j + 1;
 		}
 	}
@@ -202,16 +209,16 @@ public class App {
 	}
 
 	static long fib(long n) {
-		
-		int a = 0, b = 1, c; 
-        if (n == 0) 
-            return a; 
-        for (int i = 2; i <= n; i++) { 
-            c = a + b; 
-            a = b; 
-            b = c; 
-        } 
-        return b; 
+
+		int a = 0, b = 1, c;
+		if (n == 0)
+			return a;
+		for (int i = 2; i <= n; i++) {
+			c = a + b;
+			a = b;
+			b = c;
+		}
+		return b;
 	}
 
 }
